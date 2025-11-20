@@ -11,6 +11,10 @@ getwd()
 
 #Load packages
 
+install.packages("devtools")
+
+devtools::install_github("jeremiaheb/rvc", force = TRUE)
+
 library(tidyverse)  
 library(janitor)  
 library(rvc) 
@@ -29,6 +33,8 @@ sample_raw <- USVI$sample_data
 
 str(sample_raw)
 glimpse(sample_raw)
+
+
 
 #Clean up names & select columns I need
 
