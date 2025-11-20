@@ -13,7 +13,7 @@ getwd()
 
 install.packages("devtools")
 
-devtools::install_github("jeremiaheb/rvc", force = TRUE)
+devtools::install_github("jeremiaheb/rvc")
 
 library(tidyverse)  
 library(janitor)  
@@ -108,6 +108,19 @@ richness_site_year <- sample %>%
 
 head(richness_site_year)
 
+#Species richness by site, year, and habitat (for habitat plots)
+
+site_year_richness_habitat <- sample_present %>%
+  group_by(site_id, year, habitat) %>%
+  summarise(
+    species_richness = n_distinct(species),
+    .groups = "drop"
+  )
+
+summary(site_year_richness_habitat$species_richness)
+head(site_year_richness_habitat)
+
+
 #Export CSVs
 
 write_csv(richness_site,
@@ -164,5 +177,110 @@ top_species
 
 write_csv(top_species, "outputs/top_species.csv")
 
+#Mean species richness by habitat
+
+habitat_names <- c(
+  "AGRF" = "Aggregate Reef",
+  "BDRK" = "Bedrock",
+  "HARD" = "Hardbottom",
+  "PTRF" = "Patch Reef",
+  "PVMT" = "Pavement",
+  "SCR"  = "Scattered Coral / Rubble"
+)
+
+richness_habitat_stats <- site_year_richness_habitat %>%
+  group_by(habitat) %>%
+  summarise(
+    mean_richness = mean(species_richness, na.rm = TRUE),
+    sd_richness   = sd(species_richness, na.rm = TRUE),
+    n_samples     = n(),
+    se_richness   = sd_richness / sqrt(n_samples)
+  )
+
+richness_habitat_stats
+
+#Mean species richness
+
+p_rich_habitat <- richness_habitat_stats %>%
+  ggplot(aes(x = habitat, y = mean_richness, fill = habitat)) +
+  geom_col() +
+  geom_errorbar(aes(
+    ymin = mean_richness - se_richness,
+    ymax = mean_richness + se_richness
+  ), width = 0.2) +
+  scale_fill_brewer(palette = "Set2", labels = habitat_names) +
+  theme_minimal() +
+  labs(
+    title = "Mean Fish Species Richness by Habitat (USVI, 2017–2023, ± SE)",
+    x = "Habitat Code",
+    y = "Mean Species Richness per Site-year",
+    fill = "Habitat Type"
+  )
+
+p_rich_habitat
+
+ggsave("figs/fig_richness_by_habitat.png",
+       p_rich_habitat, width = 7, height = 5, dpi = 300)
 
 
+#Distribution of site-level richness by habitat 
+
+p_box_habitat <- site_year_richness_habitat %>%
+  ggplot(aes(x = habitat, y = species_richness, fill = habitat)) +
+  geom_boxplot() +
+  scale_fill_brewer(palette = "Set2", labels = habitat_names) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Site-year Fish Species Richness Across Habitats",
+    x = "Habitat Code",
+    y = "Species Richness per Site-year",
+    fill = "Habitat Type"
+  )
+
+p_box_habitat
+
+ggsave("figs/fig_boxplot_richness_habitat.png",
+       p_box_habitat, width = 7, height = 5, dpi = 300)
+
+#Mean species in each region by year
+
+richness_region_year <- sample_present %>%
+  group_by(site_id, year, region) %>%
+  summarise(
+    species_richness = n_distinct(species),
+    .groups = "drop"
+  )
+
+region_year_stats <- richness_region_year %>%
+  group_by(region, year) %>%
+  summarise(
+    mean_richness = mean(species_richness, na.rm = TRUE),
+    sd_richness   = sd(species_richness, na.rm = TRUE),
+    n_samples     = n(),
+    se_richness   = sd_richness / sqrt(n_samples),
+    .groups = "drop"
+  )
+
+p_region_line <- region_year_stats %>%
+  ggplot(aes(x = year, y = mean_richness, color = region, group = region)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  geom_ribbon(aes(
+    ymin = mean_richness - se_richness,
+    ymax = mean_richness + se_richness,
+    fill = region
+  ), alpha = 0.15, color = NA) +
+  scale_color_brewer(palette = "Set2") +
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal() +
+  labs(
+    title = "Mean Fish Species Richness by Region Over Time (USVI)",
+    x = "Year",
+    y = "Mean Species Richness per Site-Year",
+    color = "Region",
+    fill = "Region"
+  )
+p_region_line
+
+ggsave("figs/fig_region_richness_line.png",
+       p_region_line, width = 7, height = 5, dpi = 300)
