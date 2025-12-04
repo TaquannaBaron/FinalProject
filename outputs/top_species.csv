@@ -1,21 +1,21 @@
-species,n
-THA BIFA,12467
-SPA AURO,11783
-HAL GARN,10310
-ACA BAHI,9832
-STE PART,8965
-SCA ISER,7568
-ACA COER,7556
-SCA TAEN,6871
-HAL BIVI,6758
-CHR CYAN,5820
-SPA VIRI,5584
-ACA CHIR,4577
-CEP FULV,4010
-HAL MACU,3722
-HAE FLAV,3129
-CAR RUBE,2868
-CHA CAPI,2846
-HOL RUFU,2824
-HOL ADSC,2555
-OCY CHRY,2488
+species,COMNAME,SCINAME,n
+THA BIFA,bluehead,Thalassoma bifasciatum,12467
+SPA AURO,redband parrotfish,Sparisoma aurofrenatum,11783
+HAL GARN,yellowhead wrasse,Halichoeres garnoti,10310
+ACA BAHI,ocean surgeon,Acanthurus bahianus,9832
+STE PART,bicolor damselfish,Stegastes partitus,8965
+SCA ISER,striped parrotfish,Scarus iseri,7568
+ACA COER,blue tang,Acanthurus coeruleus,7556
+SCA TAEN,princess parrotfish,Scarus taeniopterus,6871
+HAL BIVI,slippery dick,Halichoeres bivittatus,6758
+CHR CYAN,blue chromis,Chromis cyanea,5820
+SPA VIRI,stoplight parrotfish,Sparisoma viride,5584
+ACA CHIR,doctorfish,Acanthurus chirurgus,4577
+CEP FULV,coney,Cephalopholis fulva,4010
+HAL MACU,clown wrasse,Halichoeres maculipinna,3722
+HAE FLAV,French grunt,Haemulon flavolineatum,3129
+CAR RUBE,bar jack,Caranx ruber,2868
+CHA CAPI,foureye butterflyfish,Chaetodon capistratus,2846
+HOL RUFU,longspine squirrelfish,Holocentrus rufus,2824
+HOL ADSC,squirrelfish,Holocentrus adscensionis,2555
+OCY CHRY,yellowtail snapper,Ocyurus chrysurus,2488

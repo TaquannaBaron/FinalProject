@@ -1,26 +1,131 @@
 ---
-title: "Final"
-format: html
-editor: visual
+title: "USVI Fish Species Richness (2017–2023)"
+author: "Taquanna Baron"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+et-al-min: 2
+code-fold: true
+code-tools: true
+format: 
+  html:
+    page-layout: full
+    toc: true
+    number-sections: true
+    fig-cap-location: bottom
+    theme: minty
+    title-block: true
+    title-block-banner: "#F06292"
+    
+editor: source
 ---
 
-## Quarto
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+# install.packages('devtools', repos = "http://cran.us.r-project.org")
 
-## Running Code
+library(tidyverse)
+library(janitor)
+library(rvc)
+library(ggplot2)
+library (devtools)
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+# devtools::install_github("jeremiaheb/rvc")
 
-```{r}
-1 + 1
+source("C:/Users/taqua/iCloudDrive/Desktop/Masters at UVI/MMES Program_/FALL 2025/MES 565B - GIS and Data Management/FinalProject/scripts/01_rvc_richness.R")
+
 ```
 
-You can add options to executable code like this
+\newpage
 
-```{r}
-#| echo: false
-2 * 2
+## Introduction
+
+This document summarizes patterns in fish species richness across the U.S. Virgin Islands (USVI) using National Coral Reef Monitoring Program (NCRMP) fish survey data collected between 2017 and 2023. Data for St. Thomas/St. John and St. Croix were downloaded using the rvc package and prepared using functions from tidyverse and janitor. The focus of the analysis is to explore how species richness varies across habitats, between regions, and through time. The project also identifies the most frequently observed species in the dataset. The overall goal is to provide a clear and reproducible workflow that highlights basic spatial and temporal biodiversity trends in the USVI.
+
+\newpage
+
+## Study Area
+
+NCRMP surveys follow a stratified random sampling design across shallow, hard-bottom reef habitats in the USVI. Each sampling unit contains extensive site-level information, including habitat code, latitude and longitude, region, and sample unit ID. These metadata allow richness to be summarized meaningfully across spatial and ecological gradients. The figure below shows the survey sites in a condensed version. It represents the top 20 survey areas with the highest species richness in each region. It also provides a view of the habitat types categorized by color. It was generated in ArcGIS Pro and exported.
+
+```{r, echo = FALSE, fig.align= 'center', out.width= "80%"}
+knitr::include_graphics("figs/fig_usvi_richness_map.png")
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+\newpage
+
+## Sampling Summary
+
+Before examining species richness patterns, it is important to understand the structure of the dataset. The tables below summarize the number of sampled sites, the number of species recorded, the range of years represented, and the distribution of sampling effort across regions. These context summaries help ensure that any differences in richness are interpreted with a clear understanding of survey effort and spatial coverage.
+
+```{r, echo = FALSE}
+n_sites
+n_species
+years_summary
+sites_by_region
+
+```
+
+\newpage
+
+## Methods
+
+All analyses were performed in R. NCRMP fish survey data for the years 2017–2023 were downloaded using the getRvcData() function from the rvc package. The dataset was cleaned by standardizing column names with clean_names(), filtering to remove zero-count records when summarizing presence-only data, selecting relevant columns, and organizing variables into consistent formats for summarization. Species richness was calculated at the site level by counting distinct species per site. These values were then summarized across habitat type, region, and year. Figures for the results section were generated in the accompanying analysis script (01_rvc_richness.R), using ggplot2 for visualization.
+
+\newpage
+
+## Results {.tabset}
+
+### Habitat Richness
+
+Mean species richness varied strongly by habitat type. Habitats with high structural complexity, such as aggregate reef, tended to support higher numbers of species. The figure below shows average site-level richness across habitat types.
+
+```{r, echo=FALSE, fig.cap="Mean site-level species richness by habitat type (± SE)."}
+p_rich_habitat
+
+```
+
+The full distribution of site-level richness values within each habitat category provides additional context. Some habitats showed narrow ranges of richness, while others displayed more variation, likely reflecting differences in physical structure and ecological conditions.
+
+```{r, echo=FALSE, fig.cap="Distribution of species richness across habitat types."}
+p_box_habitat
+
+```
+
+### Regional Trends
+
+To compare patterns between St. Thomas/St. John and St. Croix, species richness was averaged by region for each survey year. The results show modest but noticeable differences between regions, with St. Thomas/St. John often exhibiting slightly higher average richness. These differences can reflect habitat availability, ecological conditions, or differences in sampling intensity across years. The figure below shows mean richness by region across the study period.
+
+```{r, echo=FALSE, fig.cap="Mean species richness by region across survey years (± SE)."}
+p_region_line
+
+```
+
+### Most Frequently Observed Species
+
+The table below lists the twenty most frequently observed species across all sampled sites and years. These dominant species represent common reef-associated fishes that appear consistently in NCRMP diver surveys. Their frequent occurrence makes them useful indicators of general reef condition.
+
+```{r, echo = FALSE}
+top_species |>
+  dplyr::rename(
+    `Species Code`    = species,
+    `Common Name`     = COMNAME,
+    `Scientific Name` = SCINAME,
+    `Count`           = n
+  ) |>
+  knitr::kable(
+    caption = "Top 20 most frequently observed species in the USVI (2017–2023)."
+  )
+```
+
+\newpage
+
+## Interpretation
+
+The results indicate clear ecological patterns across the USVI. Habitat complexity plays a major role in shaping species richness, with structurally rich habitats supporting higher numbers of species. Regional comparisons suggest that St. Thomas/St. John may sustain slightly greater richness than St. Croix, although differences are not large and may partly reflect survey coverage. Temporal variation in richness is apparent in the dataset, but year-to-year changes may be influenced by both ecological processes and sampling effort. Finally, the species observed most frequently are small, abundant reef fishes commonly captured in NCRMP stationary point-count surveys.
+
+\newpage
+
+## Acknowledgements
+
+This analysis was completed as part of MMES 565B: Data Wrangling in R and Introduction to GIS at the University of the Virgin Islands (Fall 2025). Data were accessed through the rvc R package, drawing from NCRMP reef fish surveys conducted across the USVI between 2017 and 2023. Special thanks to Dr. Jeremiah Blondeau for course materials, guidance, and analytical support throughout the semester.

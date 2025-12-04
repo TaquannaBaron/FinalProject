@@ -9,23 +9,25 @@
 
 getwd()
 
+project_dir <- "C:/Users/taqua/iCloudDrive/Desktop/Masters at UVI/MMES Program_/FALL 2025/MES 565B - GIS and Data Management/FinalProject"
+outputs_dir <- file.path(project_dir, "outputs")
+dir.create("figs", showWarnings = FALSE)
+
 #Load packages
 
-install.packages("devtools")
+# install.packages("devtools")
 
-devtools::install_github("jeremiaheb/rvc")
+# devtools::install_github("jeremiaheb/rvc")
 
 library(tidyverse)  
 library(janitor)  
 library(rvc) 
 library (stringr)
 
-#Load data from rvc
+data_dir <- file.path(project_dir, "data")
+usvi_rds <- file.path(data_dir, "USVI_2017_2023.rds")
 
-USVI <- getRvcData(
-  years   = 2017:2023,
-  regions = c("STTSTJ", "STX")
-)
+USVI <- readRDS(usvi_rds)
 
 names(USVI)
 
@@ -33,10 +35,6 @@ sample_raw <- USVI$sample_data
 
 str(sample_raw)
 glimpse(sample_raw)
-
-
-
-#Clean up names & select columns I need
 
 sample <- sample_raw %>%
   janitor::clean_names() %>%    
@@ -67,6 +65,9 @@ sample_present <- sample %>%
 
 glimpse(sample_present)
 
+taxa_lut <- USVI$taxonomic_data %>%
+  dplyr::select(SPECIES_CD, COMNAME, SCINAME)
+
 #Site-level coordinates
 
 site_coords <- sample %>%
@@ -82,7 +83,7 @@ head(site_coords)
 #Species richness by site
 
 richness_site <- sample %>%
-  group_by(site_id) %>%
+  group_by(site_id, region) %>%
   summarise(
     species_richness = n_distinct(species)
   ) %>%
@@ -108,7 +109,7 @@ richness_site_year <- sample %>%
 
 head(richness_site_year)
 
-#Species richness by site, year, and habitat (for habitat plots)
+#Species richness by site, year, and habitat
 
 site_year_richness_habitat <- sample_present %>%
   group_by(site_id, year, habitat) %>%
@@ -119,18 +120,6 @@ site_year_richness_habitat <- sample_present %>%
 
 summary(site_year_richness_habitat$species_richness)
 head(site_year_richness_habitat)
-
-
-#Export CSVs
-
-write_csv(richness_site,
-          "outputs/fish_richness_site.csv")
-
-write_csv(richness_site_habitat,
-          "outputs/fish_richness_site_habitat.csv")
-
-write_csv(richness_site_year,
-          "outputs/fish_richness_site_year.csv")
 
 #Number of unique sites
 
@@ -165,17 +154,61 @@ sites_by_region <- sample_present %>%
 
 sites_by_region
 
-write_csv(sites_by_region, "outputs/sites_by_region.csv")
-
 #Top 20 species
 
 top_species <- sample_present %>%
   count(species, sort = TRUE) %>%
-  slice_max(n, n = 20)
+  slice_max(n, n = 20) %>%
+  left_join(taxa_lut, by = c("species" = "SPECIES_CD")) %>%
+  dplyr::select(
+    species,        
+    COMNAME,      
+    SCINAME,        
+    n             
+  )
 
 top_species
 
-write_csv(top_species, "outputs/top_species.csv")
+summary(richness_site$species_richness)
+
+#Top richness sites per region
+
+top_per_region <- richness_site %>%
+  group_by(region) %>%
+  slice_max(species_richness, n = 20, with_ties = FALSE) %>% 
+  ungroup()
+
+nrow(top_per_region)
+table(top_per_region$region)
+
+# write.csv(top_per_region,
+#           "outputs/top_sites_per_region.csv",
+#           row.names = FALSE)
+# 
+# write_csv(
+#   richness_site,
+#   file.path(outputs_dir, "fish_richness_site.csv")
+# )
+# 
+# write_csv(
+#   richness_site_habitat,
+#   file.path(outputs_dir, "fish_richness_site_habitat.csv")
+# )
+# 
+# write_csv(
+#   richness_site_year,
+#   file.path(outputs_dir, "fish_richness_site_year.csv")
+# )
+# 
+# write_csv(
+#   sites_by_region,
+#   file.path(outputs_dir, "sites_by_region.csv")
+# )
+# 
+# write_csv(
+#   top_species,
+#   file.path(outputs_dir, "top_species.csv")
+# )
 
 #Mean species richness by habitat
 

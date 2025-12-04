@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Taquanna Baron">
+<meta name="dcterms.date" content="2025-12-04">
 
-<title>Final</title>
+<title>USVI Fish Species Richness (2017–2023)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,56 +70,317 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-2a5858aadb409879eface58f2bab4920.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #F06292;
+      }
+</style>
 
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Final</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <div class="quarto-title-block"><div><h1 class="title">USVI Fish Species Richness (2017–2023)</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                      </div>
   </div>
+    
   
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Taquanna Baron </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 4, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#study-area" id="toc-study-area" class="nav-link" data-scroll-target="#study-area"><span class="header-section-number">2</span> Study Area</a></li>
+  <li><a href="#sampling-summary" id="toc-sampling-summary" class="nav-link" data-scroll-target="#sampling-summary"><span class="header-section-number">3</span> Sampling Summary</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">4</span> Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">5</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#habitat-richness" id="toc-habitat-richness" class="nav-link" data-scroll-target="#habitat-richness"><span class="header-section-number">5.1</span> Habitat Richness</a></li>
+  <li><a href="#regional-trends" id="toc-regional-trends" class="nav-link" data-scroll-target="#regional-trends"><span class="header-section-number">5.2</span> Regional Trends</a></li>
+  <li><a href="#most-frequently-observed-species" id="toc-most-frequently-observed-species" class="nav-link" data-scroll-target="#most-frequently-observed-species"><span class="header-section-number">5.3</span> Most Frequently Observed Species</a></li>
+  </ul></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">6</span> Interpretation</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements"><span class="header-section-number">7</span> Acknowledgements</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
-</header>
 
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+
+<div style="page-break-after: always;"></div>
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>This document summarizes patterns in fish species richness across the U.S. Virgin Islands (USVI) using National Coral Reef Monitoring Program (NCRMP) fish survey data collected between 2017 and 2023. Data for St.&nbsp;Thomas/St.&nbsp;John and St.&nbsp;Croix were downloaded using the rvc package and prepared using functions from tidyverse and janitor. The focus of the analysis is to explore how species richness varies across habitats, between regions, and through time. The project also identifies the most frequently observed species in the dataset. The overall goal is to provide a clear and reproducible workflow that highlights basic spatial and temporal biodiversity trends in the USVI.</p>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="study-area" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="study-area"><span class="header-section-number">2</span> Study Area</h2>
+<p>NCRMP surveys follow a stratified random sampling design across shallow, hard-bottom reef habitats in the USVI. Each sampling unit contains extensive site-level information, including habitat code, latitude and longitude, region, and sample unit ID. These metadata allow richness to be summarized meaningfully across spatial and ecological gradients. The figure below shows the survey sites in a condensed version. It represents the top 20 survey areas with the highest species richness in each region. It also provides a view of the habitat types categorized by color. It was generated in ArcGIS Pro and exported.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/fig_usvi_richness_map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="sampling-summary" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sampling-summary"><span class="header-section-number">3</span> Sampling Summary</h2>
+<p>Before examining species richness patterns, it is important to understand the structure of the dataset. The tables below summarize the number of sampled sites, the number of species recorded, the range of years represented, and the distribution of sampling effort across regions. These context summaries help ensure that any differences in richness are interpreted with a clear understanding of survey effort and spatial coverage.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>  n_sites
+1    1319</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n_species
+1       325</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  min_year max_year n_years
+1     2017     2023       4</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  region n_sites
+1 STTSTJ     704
+2    STX     615</code></pre>
 </div>
 </div>
-<p>You can add options to executable code like this</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="methods" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="methods"><span class="header-section-number">4</span> Methods</h2>
+<p>All analyses were performed in R. NCRMP fish survey data for the years 2017–2023 were downloaded using the getRvcData() function from the rvc package. The dataset was cleaned by standardizing column names with clean_names(), filtering to remove zero-count records when summarizing presence-only data, selecting relevant columns, and organizing variables into consistent formats for summarization. Species richness was calculated at the site level by counting distinct species per site. These values were then summarized across habitat type, region, and year. Figures for the results section were generated in the accompanying analysis script (01_rvc_richness.R), using ggplot2 for visualization.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="results" class="level2 tabset" data-number="5">
+<h2 class="tabset anchored" data-number="5" data-anchor-id="results"><span class="header-section-number">5</span> Results</h2>
+<section id="habitat-richness" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="habitat-richness"><span class="header-section-number">5.1</span> Habitat Richness</h3>
+<p>Mean species richness varied strongly by habitat type. Habitats with high structural complexity, such as aggregate reef, tended to support higher numbers of species. The figure below shows average site-level richness across habitat types.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Mean site-level species richness by habitat type (± SE).</figcaption>
+</figure>
 </div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+</div>
+<p>The full distribution of site-level richness values within each habitat category provides additional context. Some habitats showed narrow ranges of richness, while others displayed more variation, likely reflecting differences in physical structure and ecological conditions.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distribution of species richness across habitat types.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="regional-trends" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="regional-trends"><span class="header-section-number">5.2</span> Regional Trends</h3>
+<p>To compare patterns between St.&nbsp;Thomas/St.&nbsp;John and St.&nbsp;Croix, species richness was averaged by region for each survey year. The results show modest but noticeable differences between regions, with St.&nbsp;Thomas/St.&nbsp;John often exhibiting slightly higher average richness. These differences can reflect habitat availability, ecological conditions, or differences in sampling intensity across years. The figure below shows mean richness by region across the study period.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Mean species richness by region across survey years (± SE).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="most-frequently-observed-species" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="most-frequently-observed-species"><span class="header-section-number">5.3</span> Most Frequently Observed Species</h3>
+<p>The table below lists the twenty most frequently observed species across all sampled sites and years. These dominant species represent common reef-associated fishes that appear consistently in NCRMP diver surveys. Their frequent occurrence makes them useful indicators of general reef condition.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 20 most frequently observed species in the USVI (2017–2023).</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Species Code</th>
+<th style="text-align: left;">Common Name</th>
+<th style="text-align: left;">Scientific Name</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">THA BIFA</td>
+<td style="text-align: left;">bluehead</td>
+<td style="text-align: left;">Thalassoma bifasciatum</td>
+<td style="text-align: right;">12467</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SPA AURO</td>
+<td style="text-align: left;">redband parrotfish</td>
+<td style="text-align: left;">Sparisoma aurofrenatum</td>
+<td style="text-align: right;">11783</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HAL GARN</td>
+<td style="text-align: left;">yellowhead wrasse</td>
+<td style="text-align: left;">Halichoeres garnoti</td>
+<td style="text-align: right;">10310</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ACA BAHI</td>
+<td style="text-align: left;">ocean surgeon</td>
+<td style="text-align: left;">Acanthurus bahianus</td>
+<td style="text-align: right;">9832</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STE PART</td>
+<td style="text-align: left;">bicolor damselfish</td>
+<td style="text-align: left;">Stegastes partitus</td>
+<td style="text-align: right;">8965</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCA ISER</td>
+<td style="text-align: left;">striped parrotfish</td>
+<td style="text-align: left;">Scarus iseri</td>
+<td style="text-align: right;">7568</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ACA COER</td>
+<td style="text-align: left;">blue tang</td>
+<td style="text-align: left;">Acanthurus coeruleus</td>
+<td style="text-align: right;">7556</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCA TAEN</td>
+<td style="text-align: left;">princess parrotfish</td>
+<td style="text-align: left;">Scarus taeniopterus</td>
+<td style="text-align: right;">6871</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HAL BIVI</td>
+<td style="text-align: left;">slippery dick</td>
+<td style="text-align: left;">Halichoeres bivittatus</td>
+<td style="text-align: right;">6758</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHR CYAN</td>
+<td style="text-align: left;">blue chromis</td>
+<td style="text-align: left;">Chromis cyanea</td>
+<td style="text-align: right;">5820</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SPA VIRI</td>
+<td style="text-align: left;">stoplight parrotfish</td>
+<td style="text-align: left;">Sparisoma viride</td>
+<td style="text-align: right;">5584</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ACA CHIR</td>
+<td style="text-align: left;">doctorfish</td>
+<td style="text-align: left;">Acanthurus chirurgus</td>
+<td style="text-align: right;">4577</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CEP FULV</td>
+<td style="text-align: left;">coney</td>
+<td style="text-align: left;">Cephalopholis fulva</td>
+<td style="text-align: right;">4010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HAL MACU</td>
+<td style="text-align: left;">clown wrasse</td>
+<td style="text-align: left;">Halichoeres maculipinna</td>
+<td style="text-align: right;">3722</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HAE FLAV</td>
+<td style="text-align: left;">French grunt</td>
+<td style="text-align: left;">Haemulon flavolineatum</td>
+<td style="text-align: right;">3129</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAR RUBE</td>
+<td style="text-align: left;">bar jack</td>
+<td style="text-align: left;">Caranx ruber</td>
+<td style="text-align: right;">2868</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHA CAPI</td>
+<td style="text-align: left;">foureye butterflyfish</td>
+<td style="text-align: left;">Chaetodon capistratus</td>
+<td style="text-align: right;">2846</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOL RUFU</td>
+<td style="text-align: left;">longspine squirrelfish</td>
+<td style="text-align: left;">Holocentrus rufus</td>
+<td style="text-align: right;">2824</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HOL ADSC</td>
+<td style="text-align: left;">squirrelfish</td>
+<td style="text-align: left;">Holocentrus adscensionis</td>
+<td style="text-align: right;">2555</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OCY CHRY</td>
+<td style="text-align: left;">yellowtail snapper</td>
+<td style="text-align: left;">Ocyurus chrysurus</td>
+<td style="text-align: right;">2488</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="interpretation" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">6</span> Interpretation</h2>
+<p>The results indicate clear ecological patterns across the USVI. Habitat complexity plays a major role in shaping species richness, with structurally rich habitats supporting higher numbers of species. Regional comparisons suggest that St.&nbsp;Thomas/St.&nbsp;John may sustain slightly greater richness than St.&nbsp;Croix, although differences are not large and may partly reflect survey coverage. Temporal variation in richness is apparent in the dataset, but year-to-year changes may be influenced by both ecological processes and sampling effort. Finally, the species observed most frequently are small, abundant reef fishes commonly captured in NCRMP stationary point-count surveys.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="acknowledgements" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="acknowledgements"><span class="header-section-number">7</span> Acknowledgements</h2>
+<p>This analysis was completed as part of MMES 565B: Data Wrangling in R and Introduction to GIS at the University of the Virgin Islands (Fall 2025). Data were accessed through the rvc R package, drawing from NCRMP reef fish surveys conducted across the USVI between 2017 and 2023. Special thanks to Dr.&nbsp;Jeremiah Blondeau for course materials, guidance, and analytical support throughout the semester.</p>
+<!-- -->
+
 </section>
 
 </main>
@@ -191,6 +454,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -520,7 +834,139 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
-  </script>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "USVI Fish Species Richness (2017–2023)"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Taquanna Baron"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "`r format(Sys.time(), '%d %B %Y')`"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="an">et-al-min:</span><span class="co"> 2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">    page-layout: full</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-cap-location: bottom</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: minty</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">    title-block: true</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">    title-block-banner: "#F06292"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('devtools', repos = "http://cran.us.r-project.org")</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvc)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (devtools)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("jeremiaheb/rvc")</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"C:/Users/taqua/iCloudDrive/Desktop/Masters at UVI/MMES Program_/FALL 2025/MES 565B - GIS and Data Management/FinalProject/scripts/01_rvc_richness.R"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>This document summarizes patterns in fish species richness across the U.S. Virgin Islands (USVI) using National Coral Reef Monitoring Program (NCRMP) fish survey data collected between 2017 and 2023. Data for St. Thomas/St. John and St. Croix were downloaded using the rvc package and prepared using functions from tidyverse and janitor. The focus of the analysis is to explore how species richness varies across habitats, between regions, and through time. The project also identifies the most frequently observed species in the dataset. The overall goal is to provide a clear and reproducible workflow that highlights basic spatial and temporal biodiversity trends in the USVI.</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Study Area</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>NCRMP surveys follow a stratified random sampling design across shallow, hard-bottom reef habitats in the USVI. Each sampling unit contains extensive site-level information, including habitat code, latitude and longitude, region, and sample unit ID. These metadata allow richness to be summarized meaningfully across spatial and ecological gradients. The figure below shows the survey sites in a condensed version. It represents the top 20 survey areas with the highest species richness in each region. It also provides a view of the habitat types categorized by color. It was generated in ArcGIS Pro and exported.</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE, fig.align= 'center', out.width= "80%"}</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figs/fig_usvi_richness_map.png"</span>)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sampling Summary</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>Before examining species richness patterns, it is important to understand the structure of the dataset. The tables below summarize the number of sampled sites, the number of species recorded, the range of years represented, and the distribution of sampling effort across regions. These context summaries help ensure that any differences in richness are interpreted with a clear understanding of survey effort and spatial coverage.</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>n_sites</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>n_species</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>years_summary</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>sites_by_region</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>All analyses were performed in R. NCRMP fish survey data for the years 2017–2023 were downloaded using the getRvcData() function from the rvc package. The dataset was cleaned by standardizing column names with clean_names(), filtering to remove zero-count records when summarizing presence-only data, selecting relevant columns, and organizing variables into consistent formats for summarization. Species richness was calculated at the site level by counting distinct species per site. These values were then summarized across habitat type, region, and year. Figures for the results section were generated in the accompanying analysis script (01_rvc_richness.R), using ggplot2 for visualization.</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results {.tabset}</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### Habitat Richness</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>Mean species richness varied strongly by habitat type. Habitats with high structural complexity, such as aggregate reef, tended to support higher numbers of species. The figure below shows average site-level richness across habitat types.</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, fig.cap="Mean site-level species richness by habitat type (± SE)."}</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>p_rich_habitat</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>The full distribution of site-level richness values within each habitat category provides additional context. Some habitats showed narrow ranges of richness, while others displayed more variation, likely reflecting differences in physical structure and ecological conditions.</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, fig.cap="Distribution of species richness across habitat types."}</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>p_box_habitat</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="fu">### Regional Trends</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>To compare patterns between St. Thomas/St. John and St. Croix, species richness was averaged by region for each survey year. The results show modest but noticeable differences between regions, with St. Thomas/St. John often exhibiting slightly higher average richness. These differences can reflect habitat availability, ecological conditions, or differences in sampling intensity across years. The figure below shows mean richness by region across the study period.</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, fig.cap="Mean species richness by region across survey years (± SE)."}</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>p_region_line</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### Most Frequently Observed Species</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>The table below lists the twenty most frequently observed species across all sampled sites and years. These dominant species represent common reef-associated fishes that appear consistently in NCRMP diver surveys. Their frequent occurrence makes them useful indicators of general reef condition.</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>top_species <span class="sc">|&gt;</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Species Code</span><span class="st">`</span>    <span class="ot">=</span> species,</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Common Name</span><span class="st">`</span>     <span class="ot">=</span> COMNAME,</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Scientific Name</span><span class="st">`</span> <span class="ot">=</span> SCINAME,</span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Count</span><span class="st">`</span>           <span class="ot">=</span> n</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Top 20 most frequently observed species in the USVI (2017–2023)."</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation</span></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>The results indicate clear ecological patterns across the USVI. Habitat complexity plays a major role in shaping species richness, with structurally rich habitats supporting higher numbers of species. Regional comparisons suggest that St. Thomas/St. John may sustain slightly greater richness than St. Croix, although differences are not large and may partly reflect survey coverage. Temporal variation in richness is apparent in the dataset, but year-to-year changes may be influenced by both ecological processes and sampling effort. Finally, the species observed most frequently are small, abundant reef fishes commonly captured in NCRMP stationary point-count surveys.</span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## Acknowledgements</span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>This analysis was completed as part of MMES 565B: Data Wrangling in R and Introduction to GIS at the University of the Virgin Islands (Fall 2025). Data were accessed through the rvc R package, drawing from NCRMP reef fish surveys conducted across the USVI between 2017 and 2023. Special thanks to Dr. Jeremiah Blondeau for course materials, guidance, and analytical support throughout the semester.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
